@@ -1,0 +1,33 @@
+QKA - K_A - KA_ - A__ ***
+QAK - KA_ - A__ ***
+	Shift left K if open slot, K then A order of ops
+KQA - _QK - Q_K - QKA ***
+	- _QK - __Q - Q_K - QKA *** 
+KAQ - _KQ - QK_ - KA_ - ***
+	- If Q and Q not left
+AQK - KQ_ - K_Q - A_K - AKQ
+AKQ - K_Q - A_K - 
+	- _KA - K_A - KAQ
+
+QA_
+Q_A
+_QA
+QK_ 
+Q_K
+_QK
+KA_
+K_A
+_KA
+
+Q__
+_Q_
+__Q
+K__ - Q_K - QK_ - 
+	- A_K - AK_ - QKA ***
+_K_  
+__K
+A__ - Q_A - QA_ - KAQ
+_A_ - AK_ - _KA - KQA
+	- AQ_ - _QA - QKA
+__A - _AK - A_K - AKQ
+	- _AQ - QAK ***
