@@ -3,7 +3,6 @@ from collections import deque
 import itertools
 
 
-
 class Board(object):
     def __init__(self, board):
         self.board = board
@@ -31,53 +30,29 @@ class Solver(object):
     def __init__(self, board):
         self.board = board
 
-    def is_not_solved(self):
-        return not self.board.is_solved()
-
     def get_locations(self):
         return {x:self.board.get_card_pos(x) if self.board.get_card_pos(x) >= 0
                 else None for x in ['A','K','Q']}
 
     def solver_logic(self):
-        #self.board.display_board()
-        board_length = self.board.get_board_length()
+        self.board.display_board()
         board_loc = self.get_locations()
-        if board_length == 3:
+        if self.board.get_board_length() == 3:
             if board_loc['Q'] == 0 and board_loc['K'] == 1:
                 self.board.move_piece_left(board_loc['K'])
             else:
                 self.board.move_piece_left((board_loc['Q']-1)%3)
-            #if board_loc['Q'] == 0: #or board_loc['K'] == 0:
-            #    self.board.move_piece_left(board_loc['K'])
-            #else:
-            #    self.board.move_piece_right(board_loc['A'])
-        elif board_length == 2:
+        elif self.board.get_board_length() == 2:
             if board_loc['K'] == 0 and board_loc['A'] == 2:
                 self.board.move_piece_right(2)
             else:
                 self.board.move_piece_left((self.board.get_card_pos('_') + 1) % 3)
-            #if board_loc['Q'] == 1:
-            #    self.board.move_piece_right(board_loc['Q'])
-            #elif board_loc['Q'] == 2 and self.board.get_card_pos('_') == 0:
-            #    self.board.move_piece_right(board_loc['Q'])
-            #elif board_loc['K'] >= 1:
-            #    self.board.move_piece_left(board_loc['K'])
-            #elif board_loc['A'] >= 0:
-            #    self.board.move_piece_right(board_loc['A'])
         else:
             if self.board.is_solved():
                 return True
-            elif board_loc['Q'] >= 0:
-                self.board.move_piece_right(board_loc['Q'])
-            elif board_loc['K'] >= 0:
-                self.board.move_piece_right(board_loc['K'])
-                #self.board.move_piece_left(board_loc['K'])
             else:
-                self.board.move_piece_right(board_loc['A'])
-
-
-
-
+                top_card = [k for k,v in board_loc.iteritems() if v >= 0][0]
+                self.board.move_piece_right(board_loc[top_card])
 
 def run_program(locations):
     print locations
